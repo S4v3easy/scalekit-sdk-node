@@ -170,7 +170,9 @@ describe('Tokens', () => {
       for (const id of tokenIds.slice(1)) {
         try {
           await client.token.invalidateToken(id);
-        } catch (_) {}
+        } catch (error) {
+          console.error('Failed to invalidate token during cleanup:', error);
+        }
       }
     });
   });
